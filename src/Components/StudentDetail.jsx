@@ -7,7 +7,6 @@ export default class StudentDetail extends Component {
       <Card>
         <Card.Body>
           <Card.Title>Student detail</Card.Title>
-          <Card.Text>
             <Form>
               <Row>
                 <Col>
@@ -46,7 +45,6 @@ export default class StudentDetail extends Component {
                 </Col>
               </Row>
             </Form>
-          </Card.Text>
         </Card.Body>
       </Card>
     );
