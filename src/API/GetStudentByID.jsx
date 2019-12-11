@@ -1,7 +1,7 @@
 const baseURL = "http://localhost:3001/students/";
 
-const GetStudents = async () => {
-  let URL = baseURL;
+const GetStudentByID = async (selectedStudentID) => {
+  let URL = baseURL+selectedStudentID;
   try {
     let response = await fetch(URL, {
       method: "GET"
@@ -13,4 +13,4 @@ const GetStudents = async () => {
     console.log(error);
   }
 };
-export default GetStudents;
+export default GetStudentByID;

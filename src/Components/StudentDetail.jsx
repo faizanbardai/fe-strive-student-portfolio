@@ -1,50 +1,30 @@
 import React, { Component } from "react";
-import { Form, Row, Col, Card } from "react-bootstrap";
+import { Card, ListGroup } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faUser, faAt, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
 export default class StudentDetail extends Component {
+
   render() {
+    let { name, surname, email, dob } = this.props.selectedStudent;
     return (
       <Card>
         <Card.Body>
           <Card.Title>Student detail</Card.Title>
-            <Form>
-              <Row>
-                <Col>
-                  <Form.Label>First Name</Form.Label>
-                </Col>
-                <Col>
-                  <Form.Control plaintext readOnly defaultValue="FayJu" />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Label>Last Name</Form.Label>
-                </Col>
-                <Col>
-                  <Form.Control plaintext readOnly defaultValue="Bardai" />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Label>Email</Form.Label>
-                </Col>
-                <Col>
-                  <Form.Control
-                    plaintext
-                    readOnly
-                    defaultValue="FayJu@bardai.com"
-                  />
-                </Col>
-              </Row>
-              <Row>
-                <Col>
-                  <Form.Label>Date of birth (dd/mmm/yyyy)</Form.Label>
-                </Col>
-                <Col>
-                  <Form.Control plaintext readOnly defaultValue="01/Feb/1989" />
-                </Col>
-              </Row>
-            </Form>
+          <ListGroup>
+            <ListGroup.Item>
+              <FontAwesomeIcon className="mr-2" icon={faUser} />
+              {name} {surname}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <FontAwesomeIcon className="mr-2" icon={faAt} />
+              {email}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <FontAwesomeIcon className="mr-2" icon={faCalendarAlt} />
+              {dob}
+            </ListGroup.Item>
+          </ListGroup>
         </Card.Body>
       </Card>
     );

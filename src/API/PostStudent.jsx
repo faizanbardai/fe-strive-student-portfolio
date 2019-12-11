@@ -1,4 +1,4 @@
-const baseURL = "http://localhost:3001/students";
+const baseURL = "http://localhost:3001/students/";
 
 const PostStudents = async (student) => {
   let URL = baseURL;
