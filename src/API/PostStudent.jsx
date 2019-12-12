@@ -1,7 +1,7 @@
-const baseURL = "http://localhost:3001/students/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 const PostStudents = async (student) => {
-  let URL = baseURL;
+  let URL = baseURL+"/students";
   try {
     let response = await fetch(URL, {
       method: "POST",

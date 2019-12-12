@@ -1,7 +1,7 @@
-const baseURL = "http://localhost:3001/students/";
+const baseURL = process.env.REACT_APP_BASE_URL;
 
 const CheckEmailAvailability = async (email) => {
-  let URL = baseURL+"checkEmail/"+email;
+  let URL = baseURL+"/students/checkEmail/"+email;
   try {
     let response = await fetch(URL, {
       method: "GET"
