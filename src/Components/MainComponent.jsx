@@ -5,6 +5,7 @@ import StudentList from "./StudentList";
 import StudentDetail from "./StudentDetail";
 import GetStudents from "../API/GetStudents";
 import GetStudentByID from "../API/GetStudentByID";
+import CheckEmailAvailability from "../API/CheckEmailAvailability";
 
 export default class MainComponent extends Component {
   state = {
@@ -40,7 +41,8 @@ export default class MainComponent extends Component {
     );
   }
   componentDidMount = async () => {
+    let test = await CheckEmailAvailability("fleece@marigold.com");
+    console.log(test);
     this.setState({ students: await GetStudents() });
-    console.log(this.state.students);
   };
 }
