@@ -17,13 +17,13 @@ export default class StudentList extends Component {
               students.length > 0 &&
               students.map(student => (
                 <ListGroup.Item
-                  key={student.ID}
-                  data-id={student.ID}
+                  key={student._id}
+                  data-id={student._id}
                   action
                   onClick={e => selectStudent(e.currentTarget.dataset.id)}
                 >
                   <div className="d-flex justify-content-between">
-                    {student.fullName}
+                    {student.name} {student.surname}
                     <Badge pill variant="info">
                       10
                     </Badge>
