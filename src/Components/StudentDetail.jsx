@@ -1,16 +1,30 @@
 import React, { Component } from "react";
-import { Card, ListGroup } from "react-bootstrap";
+import { Card, ListGroup, Button } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUser, faAt, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faUser,
+  faAt,
+  faCalendarAlt,
+  faTrashAlt
+} from "@fortawesome/free-solid-svg-icons";
 
 export default class StudentDetail extends Component {
-
   render() {
-    let { name, surname, email, dob } = this.props.selectedStudent;
+    let { _id, name, surname, email, dob } = this.props.selectedStudent;
     return (
       <Card>
         <Card.Body>
-          <Card.Title>Student detail</Card.Title>
+          <div className="d-flex justify-content-between">
+            <Card.Title>Student detail</Card.Title>
+            <Button
+              onClick={id => {
+                this.props.deleteStudentByID(_id);
+              }}
+              variant="outline-info rounded-circle mb-2"
+            >
+              <FontAwesomeIcon icon={faTrashAlt} />
+            </Button>
+          </div>
           <ListGroup>
             <ListGroup.Item>
               <FontAwesomeIcon className="mr-2" icon={faUser} />

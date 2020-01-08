@@ -5,6 +5,7 @@ import StudentList from "./StudentList";
 import StudentDetail from "./StudentDetail";
 import GetStudents from "../API/GetStudents";
 import GetStudentByID from "../API/GetStudentByID";
+import DeleteStudentByID from "../API/DeleteStudentByID";
 
 export default class MainComponent extends Component {
   state = {
@@ -18,11 +19,20 @@ export default class MainComponent extends Component {
     let selectedStudent = await GetStudentByID(selectedStudentID);
     this.setState({ selectedStudent });
   };
+  deleteStudentByID = async selectedStudentID => {
+    await DeleteStudentByID(selectedStudentID);
+    this.setState({
+      students: this.state.students.filter(
+        student => student._id !== selectedStudentID
+      ),
+      selectedStudent: {}
+    });
+
+  }
   render() {
     let { students, selectedStudent } = this.state;
     return (
-      <Container fluid>
-        <Container>
+        <Container fluid>
           <Row className="my-2">
             <Col xs={12} md={5}>
               <StudentList
@@ -32,11 +42,10 @@ export default class MainComponent extends Component {
             </Col>
             <Col xs={12} md={7}>
               <NewStudentForm updateStudentList={this.updateStudentList} />
-              <StudentDetail selectedStudent={selectedStudent} />
+              <StudentDetail selectedStudent={selectedStudent} deleteStudentByID={this.deleteStudentByID} />
             </Col>
           </Row>
         </Container>
-      </Container>
     );
   }
   componentDidMount = async () => {
