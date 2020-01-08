@@ -94,9 +94,9 @@ export default class NewStudentForm extends Component {
                       }
                     >
                       <FontAwesomeIcon
-                        data-toggle="tooltip"
-                        data-placement="top"
-                        title="Tooltip on top"
+                        // data-toggle="tooltip"
+                        // data-placement="top"
+                        // title="Tooltip on top"
                         style={{ color: "red" }}
                         icon={faExclamationCircle}
                       />
