@@ -49,6 +49,9 @@ export default class MainComponent extends Component {
     );
   }
   componentDidMount = async () => {
-    this.setState({ students: await GetStudents() });
+    const response = await GetStudents()
+    const documentCount = response.documentCount;
+    const studentsFound = response.studentsFound;
+    this.setState({students: studentsFound, totalStudents: documentCount});
   };
 }
