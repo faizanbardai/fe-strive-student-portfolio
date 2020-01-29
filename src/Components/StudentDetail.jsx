@@ -7,8 +7,11 @@ import {
   faCalendarAlt,
   faTrashAlt
 } from "@fortawesome/free-solid-svg-icons";
+import { connect } from "react-redux";
 
-export default class StudentDetail extends Component {
+const mapStateToProps = state => state;
+
+class StudentDetail extends Component {
   render() {
     let { _id, name, surname, email, dob } = this.props.selectedStudent;
     return (
@@ -17,7 +20,7 @@ export default class StudentDetail extends Component {
           <div className="d-flex justify-content-between">
             <Card.Title>Student detail</Card.Title>
             <Button
-              onClick={id => {
+              onClick={() => {
                 this.props.deleteStudentByID(_id);
               }}
               variant="outline-info rounded-circle mb-2"
@@ -44,3 +47,5 @@ export default class StudentDetail extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps)(StudentDetail);

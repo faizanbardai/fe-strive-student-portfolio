@@ -1,7 +1,18 @@
 import React, { Component } from "react";
 import { ListGroup, Card, Badge } from "react-bootstrap";
+import { connect } from "react-redux";
 
-export default class StudentList extends Component {
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => ({
+  selectStudentRedux: id =>
+    dispatch({
+      type: "SELECT_STUDENT_REDUX",
+      payload: id
+    })
+});
+
+class StudentList extends Component {
   render() {
     let { students, selectStudent } = this.props;
     return (
@@ -20,7 +31,10 @@ export default class StudentList extends Component {
                   key={student._id}
                   data-id={student._id}
                   action
-                  onClick={()=>selectStudent(student._id)}
+                  onClick={() => {
+                    selectStudent(student._id);
+                    this.props.selectStudentRedux(student._id);
+                  }}
                 >
                   <div className="d-flex justify-content-between">
                     {student.name} {student.surname}
@@ -36,3 +50,5 @@ export default class StudentList extends Component {
     );
   }
 }
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentList);
