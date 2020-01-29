@@ -20,7 +20,7 @@ export default class StudentList extends Component {
                   key={student._id}
                   data-id={student._id}
                   action
-                  onClick={e => selectStudent(e.currentTarget.dataset.id)}
+                  onClick={()=>selectStudent(student._id)}
                 >
                   <div className="d-flex justify-content-between">
                     {student.name} {student.surname}

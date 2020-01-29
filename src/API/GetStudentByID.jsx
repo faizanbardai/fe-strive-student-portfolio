@@ -6,11 +6,10 @@ const GetStudentByID = async selectedStudentID => {
     let response = await fetch(URL, {
       method: "GET"
     });
-    if (response.ok) {
-      return await response.json();
-    }
+    response = await response.json();
+      return response;
   } catch (error) {
-    console.log(error);
+    return { error: error };
   }
 };
 export default GetStudentByID;
